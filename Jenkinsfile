@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "==========Building========="
-		bat '/usr/local/share/dotnet/dotnet build Devops.sln -p:Configuration=release -v:q'
+		bat 'dotnet build Devops.sln -p:Configuration=release -v:q'
             }
         }
 		
@@ -18,8 +18,8 @@ pipeline {
 	    
 	stage('Publish') {
 		steps {
-		    bat '/usr/local/share/dotnet/dotnet restore'
-		    bat '/usr/local/share/dotnet/dotnet publish Devops.sln -c Release'
+		    bat 'dotnet restore'
+		    bat 'dotnet publish Devops.sln -c Release'
 		}
 	}
 	    
