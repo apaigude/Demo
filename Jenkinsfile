@@ -27,7 +27,7 @@ pipeline {
         {
             steps {
                 echo "==========BuildDockerImage=========="
-		bat '/usr/local/bin/docker build -t rdimri/devops:latest .'
+		bat 'docker build -t rdimri/devops:latest .'
             }
         }
 	    
@@ -36,8 +36,8 @@ pipeline {
             steps{
                     
                     echo "==========Push image=========="
-		    bat '/usr/local/bin/docker login -u rdimri -p regno@123'
-		    bat '/usr/local/bin/docker push rdimri/devops:latest'
+		    bat 'docker login -u rdimri -p regno@123'
+		    bat 'docker push rdimri/devops:latest'
             }
         }
 	    
