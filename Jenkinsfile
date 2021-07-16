@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "==========Building========="
-		sh '/usr/local/share/dotnet/dotnet build Devops.sln -p:Configuration=release -v:q'
+		bat '/usr/local/share/dotnet/dotnet build Devops.sln -p:Configuration=release -v:q'
             }
         }
 		
@@ -18,8 +18,8 @@ pipeline {
 	    
 	stage('Publish') {
 		steps {
-		    sh '/usr/local/share/dotnet/dotnet restore'
-		    sh '/usr/local/share/dotnet/dotnet publish Devops.sln -c Release'
+		    bat '/usr/local/share/dotnet/dotnet restore'
+		    bat '/usr/local/share/dotnet/dotnet publish Devops.sln -c Release'
 		}
 	}
 	    
@@ -27,7 +27,7 @@ pipeline {
         {
             steps {
                 echo "==========BuildDockerImage=========="
-		sh '/usr/local/bin/docker build -t rdimri/devops:latest .'
+		bat '/usr/local/bin/docker build -t rdimri/devops:latest .'
             }
         }
 	    
@@ -36,8 +36,8 @@ pipeline {
             steps{
                     
                     echo "==========Push image=========="
-		    sh '/usr/local/bin/docker login -u rdimri -p regno@123'
-		    sh '/usr/local/bin/docker push rdimri/devops:latest'
+		    bat '/usr/local/bin/docker login -u rdimri -p regno@123'
+		    bat '/usr/local/bin/docker push rdimri/devops:latest'
             }
         }
 	    
